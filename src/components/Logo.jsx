@@ -1,8 +1,9 @@
 import React from 'react';
+import blogLogo from "../assets/blog-logo.png";
 
-function Logo() {
+function Logo(props) {
     return (
-        <div>Logo</div>
+        <img src={blogLogo} alt="logo" width={props.width} style={{ marginTop: "7px" }} />
     )
 }
 
