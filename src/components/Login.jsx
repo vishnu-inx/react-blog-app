@@ -2,28 +2,32 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { login as authLogin } from '../store/authSlice';
-import { Button, Input, Logo } from './index';
+import { Button, Input, Logo, Spinner } from './index';
 import { useDispatch } from 'react-redux';
 import authService from '../appwrite/auth';
 
 
 function Login() {
+    const [error, setError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { register, handleSubmit } = useForm();
-    const [error, setError] = useState("");
 
     const login = async (data) => {
-        setError("")
+        setIsSubmitting(true);
+        setError("");
         try {
             const session = await authService.login(data);
             if (session) {
                 const userData = await authService.getCurrentUser();
-                if (userData) dispatch(authLogin(userData));
+                dispatch(authLogin(userData));
+                setIsSubmitting(false);
                 navigate("/");
             }
         } catch (error) {
             setError(error.message);
+            setIsSubmitting(false);
         }
     };
 
@@ -72,8 +76,11 @@ function Login() {
                         />
                         <Button
                             type="submit"
-                            className="w-full"
-                        >Sign in</Button>
+                            disabled={isSubmitting}
+                            className={`w-full bg-blue-500 flex justify-center text-white py-2 px-4 rounded ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        >
+                            {isSubmitting ? <Spinner /> : 'Login'}
+                        </Button>
                     </div>
                 </form>
             </div>

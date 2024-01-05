@@ -8,19 +8,19 @@ import { Outlet } from 'react-router-dom';
 
 function App() {
 
-  const [loading, setLoading] = useState(true)
-  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     authService.getCurrentUser()
       .then((userData) => {
         if (userData) {
-          dispatch(login({ userData }))
+          dispatch(login(userData))
         } else {
           dispatch(logout())
         }
       })
-      .finally(() => setLoading(false))
+      .finally(() => setLoading(false));
   }, [])
 
 
@@ -34,15 +34,6 @@ function App() {
       </div>
       <div><Footer /></div>
     </div>
-    // <div className='min-h-screen w-full flex flex-wrap content-between bg-gray-400'>
-    //   <div className='w-full block'>
-    //     <Header />
-    //     <main className='h-full'>
-    //       <Outlet />
-    //     </main>
-    //     <Footer />
-    //   </div>
-    // </div>
   ) : null
 }
 

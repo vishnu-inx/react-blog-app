@@ -15,7 +15,7 @@ function RTE({ name, control, label, defaultValue = "", placeholder }) {
                         init={{
                             initialValue: defaultValue,
                             placeholder: placeholder,
-                            height: 500,
+                            height: 350,
                             menubar: true,
                             plugins: [
                                 "image",

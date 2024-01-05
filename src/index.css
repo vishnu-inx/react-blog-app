@@ -23,3 +23,12 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.login-btn {
+    width: 322px;
+    height: 60px;
+    font-weight: 800;
+    font-size: 23px;
+    font-family: ui-rounded;
+    text-align: center;
+}

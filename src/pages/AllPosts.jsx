@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Container, PostCard } from '../components';
+import { Container, PostCard, PostsSkeleton } from '../components';
 import blogService from "../appwrite/blog-service";
 import { Link } from 'react-router-dom';
+import { skeletonItems } from '../constant';
 
 function AllPosts() {
 
     const [posts, setPosts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        blogService.getPosts([]).then((posts) => {
-            if (posts) {
-                setPosts(posts.documents);
-                setIsLoading(false);
-            }
-        });
+        blogService.getPosts([])
+            .then((posts) => {
+                if (posts) {
+                    setPosts(posts.documents);
+                }
+            })
+            .finally(() => setLoading(false));
     }, []);
 
-    if (posts.length === 0 && !isLoading) {
+    if (posts.length === 0 && !loading) {
         return (
             <div className="w-full py-56 text-center">
                 <Container>
@@ -37,11 +39,21 @@ function AllPosts() {
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap'>
-                    {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
-                            <PostCard {...post} />
-                        </div>
-                    ))}
+                    {loading ? (
+                        skeletonItems.map((item, index) => (
+                            <div key={index} className="p-4 w-1/4">
+                                <PostsSkeleton />
+                            </div>
+                        ))
+                    ) : (
+                        <>
+                            {posts.map((post) => (
+                                <div key={post.$id} className='p-4 w-1/4'>
+                                    <PostCard {...post} />
+                                </div>
+                            ))}
+                        </>
+                    )}
                 </div>
             </Container>
         </div>

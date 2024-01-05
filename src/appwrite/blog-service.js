@@ -15,6 +15,7 @@ export class BlogService {
     }
 
     async createPost({ title, slug, content, featuredImage, status, userId }) {
+        console.log("slug...", slug);
         try {
             return await this.databases.createDocument(
                 config.appwriteDatabaseId,
@@ -29,7 +30,7 @@ export class BlogService {
                 }
             )
         } catch (error) {
-            console.log("Appwrite serive :: createPost :: error", error);
+            console.error("Appwrite serive :: createPost :: error", error);
         }
     }
 
@@ -47,7 +48,7 @@ export class BlogService {
                 }
             )
         } catch (error) {
-            console.log("Appwrite serive :: updatePost :: error", error);
+            console.error("Appwrite serive :: updatePost :: error", error);
         }
     }
 
@@ -60,7 +61,7 @@ export class BlogService {
             )
             return true
         } catch (error) {
-            console.log("Appwrite serive :: deletePost :: error", error);
+            console.error("Appwrite serive :: deletePost :: error", error);
             return false
         }
     }
@@ -73,7 +74,7 @@ export class BlogService {
                 slug
             )
         } catch (error) {
-            console.log("Appwrite serive :: getPost :: error", error);
+            console.error("Appwrite serive :: getPost :: error", error);
             return false
         }
     }
@@ -86,7 +87,7 @@ export class BlogService {
                 queries,
             )
         } catch (error) {
-            console.log("Appwrite serive :: getPosts :: error", error);
+            console.error("Appwrite serive :: getPosts :: error", error);
             return false
         }
     }
@@ -101,7 +102,7 @@ export class BlogService {
                 file
             )
         } catch (error) {
-            console.log("Appwrite serive :: uploadFile :: error", error);
+            console.error("Appwrite serive :: uploadFile :: error", error);
             return false
         }
     }
@@ -114,7 +115,7 @@ export class BlogService {
             )
             return true
         } catch (error) {
-            console.log("Appwrite serive :: deleteFile :: error", error);
+            console.error("Appwrite serive :: deleteFile :: error", error);
             return false
         }
     }

@@ -3,26 +3,30 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { login } from '../store/authSlice';
-import { Button, Input, Logo } from './index';
+import { Button, Input, Logo, Spinner } from './index';
 import authService from '../appwrite/auth';
 
 function Signup() {
-    const navigate = useNavigate();
     const [error, setError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
 
     const create = async (data) => {
-        setError("")
+        setIsSubmitting(true);
+        setError("");
         try {
             const userData = await authService.createAccount(data);
             if (userData) {
                 const userData = await authService.getCurrentUser();
                 if (userData) dispatch(login(userData));
+                setIsSubmitting(false);
                 navigate("/");
             }
         } catch (error) {
             setError(error.message);
+            setIsSubmitting(false);
         }
     }
 
@@ -75,8 +79,12 @@ function Signup() {
                                 required: true,
                             })}
                         />
-                        <Button type="submit" className="w-full">
-                            Create Account
+                        <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className={`w-full bg-blue-500 flex justify-center text-white py-2 px-4 rounded ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        >
+                            {isSubmitting ? <Spinner /> : 'Create Account'}
                         </Button>
                     </div>
                 </form>
