@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { blogData } from '../constant';
 import { skeletonItems } from '../constant';
+import { mainBannerImage } from '../constant';
 
 function Home() {
 
@@ -31,7 +32,7 @@ function Home() {
                     <main className="container mx-auto mt-4">
                         <div className="mb-8">
                             <img
-                                src="https://www.apptha.com/blog/wp-content/uploads/2019/05/Hire-full-stack-developer.jpg"
+                                src={mainBannerImage}
                                 alt="Featured Post"
                                 className="w-full h-64 object-cover rounded"
                             />

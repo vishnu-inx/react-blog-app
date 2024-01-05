@@ -1,9 +1,9 @@
 import React from 'react';
-import blogLogo from "../assets/blog-logo.png";
+import { logo } from '../constant';
 
 function Logo(props) {
     return (
-        <img src={blogLogo} alt="logo" width={props.width} style={{ marginTop: "7px" }} />
+        <img src={logo} alt="logo" width={props.width} style={{ marginTop: "7px" }} />
     )
 }
 

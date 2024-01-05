@@ -16,4 +16,6 @@ export const blogData = [
     }
 ]
 
+export const logo = "./src/assets/images/blog-logo.png";
+export const mainBannerImage = "./src/assets/images/main-banner.jpg";
 export const skeletonItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
