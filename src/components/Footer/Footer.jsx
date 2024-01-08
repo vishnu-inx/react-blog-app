@@ -4,16 +4,16 @@ import Logo from '../Logo';
 
 function Footer() {
     return (
-        <section className="relative overflow-hidden py-4 bg-gray-800 border border-t-2">
+        <section className="relative overflow-hidden py-4 bg-gray-800 border border-t-2 -z-10">
             <div className="relative z-10 mx-auto max-w-7xl px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-4 md:w-1/2 lg:w-5/12">
-                        <div className="flex h-24 flex-col justify-between">
-                            <div className="mb-2 inline-flex items-center ml-2">
+                        <div className="flex flex-col justify-between h-full footer-logo-wrapper">
+                            <div className="footerlogo-image-wrapper mb-2 inline-flex items-center ml-2">
                                 <Logo width="100px" />
                             </div>
                             <div>
-                                <p className="text-sm text-white text-left mt-6">
+                                <p className="text-sm text-white text-left mt-6 footer-copyright">
                                     &copy; Copyright 2023. All Rights Reserved by DevUI.
                                 </p>
                             </div>
@@ -41,22 +41,6 @@ function Footer() {
                                         Pricing
                                     </Link>
                                 </li>
-                                {/* <li className="mb-4">
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Affiliate Program
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Press Kit
-                                    </Link>
-                                </li> */}
                             </ul>
                         </div>
                     </div>
@@ -66,22 +50,6 @@ function Footer() {
                                 Support
                             </h3>
                             <ul>
-                                {/* <li className="mb-4">
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Account
-                                    </Link>
-                                </li>
-                                <li className="mb-4">
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Help
-                                    </Link>
-                                </li> */}
                                 <li className="mb-2">
                                     <Link
                                         className=" text-sm font-medium text-white hover:text-white"
@@ -123,14 +91,6 @@ function Footer() {
                                         Privacy Policy
                                     </Link>
                                 </li>
-                                {/* <li>
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Licensing
-                                    </Link>
-                                </li> */}
                             </ul>
                         </div>
                     </div>

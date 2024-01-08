@@ -49,28 +49,18 @@ function Post() {
                 {loading ? (
                     <EditPostSkeleton />
                 ) : (
-                    <div className="w-full flex-col justify-center relative">
-                        <img
-                            src={blogService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
-                            className="rounded-xl bg-cover h-80"
-                        />
+                    <div className="w-full flex flex-col justify-center relative">
 
-                        {isAuthor && (
-                            <div className="absolute right-4 top-4">
-                                <Link to={`/edit-post/${post.$id}`}>
-                                    <Button bgColor="bg-gray-700" className="mr-3 w-28 font-semibold">
-                                        UPDATE
-                                    </Button>
-                                </Link>
-                                <Button bgColor="bg-red-500" className='w-28 font-semibold' onClick={() => setShowConfirmation(true)}>
-                                    DELETE
-                                </Button>
-                            </div>
-                        )}
+                        <div className="relative">
+                            <img
+                                src={blogService.getFilePreview(post.featuredImage)}
+                                alt={post.title}
+                                className="rounded-xl bg-cover h-80 w-full object-center object-cover post-image"
+                            />
+                        </div>
 
                         {showConfirmation && (
-                            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
+                            <div className="confirm-dialog fixed top-0 left-0 w-full h-full flex items-center justify-center transition-opacity duration-300 bg-gray-800 bg-opacity-75">
                                 <div className="bg-white p-4 rounded shadow-md">
                                     <p className="text-lg font-semibold mb-4">Are you sure you want to delete?</p>
                                     <div className="flex justify-end">
@@ -92,10 +82,30 @@ function Post() {
                         )}
 
                         <div className="w-full mb-6 mt-10">
-                            <h1 className="text-2xl font-bold text-left">{post.title}</h1>
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center">{post.title}</h1>
                         </div>
-                        <div className="browser-css text-left">
+
+                        <div className="browser-css text-left max-w-screen-md mx-auto">
                             {parse(post.content)}
+                        </div>
+
+                        <div className='flex justify-end m-auto gap-5 w-3/6 mt-5'>
+                            {isAuthor && (
+                                <>
+                                    <div className="w-full">
+                                        <Link to={`/edit-post/${post.$id}`} className="w-full">
+                                            <Button bgColor="bg-gray-700" className="w-full font-semibold">
+                                                UPDATE
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                    <div className='w-full'>
+                                        <Button bgColor="bg-red-500" className='w-full' onClick={() => setShowConfirmation(true)}>
+                                            DELETE
+                                        </Button>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 )}

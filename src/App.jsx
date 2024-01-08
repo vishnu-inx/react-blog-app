@@ -25,7 +25,7 @@ function App() {
 
 
   return !loading ? (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col min-h-screen">
       <div><Header /></div>
       <div className="flex-grow overflow-y-auto">
         <main className='h-full'>
