@@ -68,6 +68,8 @@ const router = createBrowserRouter([
   },
 ])
 
+console.console.log("test router ...", router);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
