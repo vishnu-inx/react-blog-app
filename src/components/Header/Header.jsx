@@ -52,7 +52,7 @@ function Header() {
                                 <li key={item.name}>
                                     <button
                                         onClick={() => navigate(item.slug)}
-                                        className='inline-block px-4 py-2 duration-200 hover:bg-gray-700 text-white'
+                                        className='inline-block px-2 sm:px-4 py-2 duration-200 hover:bg-gray-700 text-white'
                                     >{item.name}</button>
                                 </li>
                             ) : null
