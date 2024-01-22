@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import Logo from '../Logo';
 
 function Footer() {
+
+    const currentYear = new Date().getFullYear();
+
     return (
         <section className="relative overflow-hidden py-4 bg-gray-800 border border-t-2 -z-10">
             <div className="relative z-10 mx-auto max-w-7xl px-4">
@@ -14,7 +17,7 @@ function Footer() {
                             </div>
                             <div>
                                 <p className="text-sm text-white text-left mt-6 footer-copyright">
-                                    &copy; Copyright 2023. All Rights Reserved by DevUI.
+                                    &copy; Copyright {currentYear}. All Rights Reserved.
                                 </p>
                             </div>
                         </div>
